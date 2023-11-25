@@ -21,4 +21,3 @@ require('keymaps')
 require('yank')
 
 require('lazy').setup('custom.plugins');
-

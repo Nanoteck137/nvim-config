@@ -15,6 +15,16 @@ return {
   },
 
   {
+    'akinsho/toggleterm.nvim',
+
+    keys = {
+      { '<leader>gg', require('util').toggle_lazygit }
+    },
+
+    opts = {}
+  },
+
+  {
     -- More options: https://github.com/folke/trouble.nvim
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
