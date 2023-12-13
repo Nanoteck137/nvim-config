@@ -25,7 +25,7 @@ end
 M.toggle_lazygit = function()
   local Terminal = require('toggleterm.terminal').Terminal
   local lazygit  = Terminal:new({
-    id = 1,
+    id = 100,
     cmd = "lazygit",
     dir = "git_dir",
     direction = "float",
@@ -39,6 +39,16 @@ M.toggle_lazygit = function()
   })
 
   lazygit:toggle()
+end
+
+M.send_to_scratch = function()
+  local toggleterm = require("toggleterm")
+  toggleterm.send_lines_to_terminal("single_line", true, { args = 101 })
+end
+
+M.toggle_scratch = function()
+  local toggleterm = require("toggleterm")
+  toggleterm.toggle(101)
 end
 
 return M

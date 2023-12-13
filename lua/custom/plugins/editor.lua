@@ -18,10 +18,48 @@ return {
     'akinsho/toggleterm.nvim',
 
     keys = {
-      { '<leader>gg', require('util').toggle_lazygit }
+      { '<leader>gg', require('util').toggle_lazygit },
+      { '<leader>ss', require('util').send_to_scratch },
+      { '<leader>st', require('util').toggle_scratch, },
     },
 
     opts = {}
+  },
+
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+
+    cmd = { "TodoTelescope", "TodoTrouble", "TodoLocList", "TodoQuickFix" },
+
+    keys = {
+      { '<leader>tt', '<cmd>TodoTrouble<CR>' },
+      { '[t',         require("todo-comments").jump_next },
+      { ']t',         require("todo-comments").jump_prev }
+    },
+
+    opts = {
+      highlight = {
+        before = "",          -- "fg" or "bg" or empty
+        keyword = "bg",       -- "fg", "bg", "wide" or empty. (wide is the same as bg, but will also highlight surrounding characters)
+        after = "fg",         -- "fg" or "bg" or empty
+        pattern = [[.*<(KEYWORDS)(\([^\)]*\))?:]],
+        comments_only = true, -- uses treesitter to match keywords in comments only
+        max_line_len = 400,   -- ignore lines longer than this
+        exclude = {},         -- list of file types to exclude highlighting
+      },
+      search = {
+        command = "rg",
+        args = {
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+        },
+        pattern = [[\b(KEYWORDS)(\([^\)]*\))?:]],
+      },
+    }
   },
 
   {
@@ -42,6 +80,29 @@ return {
 
     opts = {
     },
+  },
 
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+
+    keys = {
+      { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+      { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+      { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+      { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+    },
+
+    opts = {},
+  },
+
+  {
+    "aserowy/tmux.nvim",
+    opts = {
+      copy_sync = {
+        enable = false;
+      }
+    },
   }
 }

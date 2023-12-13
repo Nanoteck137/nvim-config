@@ -64,8 +64,18 @@ return {
           },
         },
         tsserver = {},
-        html = { filetypes = { 'html', 'twig', 'hbs' } },
+        html = {
+          filetypes = { 'html', 'twig', 'hbs', 'htmldjango' },
+          init_options = {
+            provideFormatter = false
+          }
+        },
+        htmx = {
+          filetypes = { 'html', 'htmldjango' },
+        },
         svelte = {},
+        astro = {},
+        tailwindcss = {},
 
         lua_ls = {
           Lua = {
@@ -81,6 +91,7 @@ return {
       -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+      capabilities.textDocument.completion.completionItem.snippetSupport = true
 
       -- Ensure the servers above are installed
       local mason_lspconfig = require 'mason-lspconfig'
@@ -96,6 +107,7 @@ return {
             on_attach = on_attach,
             settings = servers[server_name],
             filetypes = (servers[server_name] or {}).filetypes,
+            init_options = (servers[server_name] or {}).init_options,
           }
         end,
       }
