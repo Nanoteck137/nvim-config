@@ -34,8 +34,8 @@ return {
 
     keys = {
       { '<leader>tt', '<cmd>TodoTrouble<CR>' },
-      { '[t',         require("todo-comments").jump_next },
-      { ']t',         require("todo-comments").jump_prev }
+      { '[t',         function() require("todo-comments").jump_next() end },
+      { ']t',         function() require("todo-comments").jump_prev() end }
     },
 
     opts = {
