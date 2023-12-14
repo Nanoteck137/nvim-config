@@ -16,8 +16,13 @@ return {
     config = function(_, opts)
       require("tokyonight").setup(opts)
 
-      -- TODO: Change to tokyonight
-      vim.cmd.colorscheme 'tokyonight-night'
+      local app_name = os.getenv("NVIM_APPNAME")
+
+      if app_name == "nvim-dev" then
+        vim.cmd.colorscheme 'tokyonight-night'
+      else
+        vim.cmd.colorscheme 'tokyonight-storm'
+      end
     end,
   },
 
