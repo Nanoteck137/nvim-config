@@ -96,20 +96,17 @@ return {
       -- Ensure the servers above are installed
       local mason_lspconfig = require 'mason-lspconfig'
 
-      mason_lspconfig.setup {
-      }
+      mason_lspconfig.setup {}
 
-      mason_lspconfig.setup_handlers {
-        function(server_name)
-          require('lspconfig')[server_name].setup {
-            capabilities = capabilities,
-            on_attach = on_attach,
-            settings = servers[server_name],
-            filetypes = (servers[server_name] or {}).filetypes,
-            init_options = (servers[server_name] or {}).init_options,
-          }
-        end,
-      }
+      for k, v in pairs(servers) do
+        require('lspconfig')[k].setup {
+          capabilities = capabilities,
+          on_attach = on_attach,
+          settings = v,
+          filetypes = (v or {}).filetypes,
+          init_options = (v or {}).init_options,
+        }
+      end
 
       -- local null_ls = require("null-ls")
       -- null_ls.setup({
