@@ -99,7 +99,7 @@ return {
       mason_lspconfig.setup {
         ensure_installed = vim.tbl_keys(servers),
 
-        automatic_installation = { exclude = { "rust_analyzer" } }
+        automatic_installation = false,
       }
 
       mason_lspconfig.setup_handlers {
