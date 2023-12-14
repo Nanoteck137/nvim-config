@@ -14,13 +14,13 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+require('lazy').setup('custom.plugins');
+
 require('options')
 require('filetype')
 require('snippets')
 require('keymaps')
 require('yank')
-
-require('lazy').setup('custom.plugins');
 
 function on_attach(on_attach)
   vim.api.nvim_create_autocmd("LspAttach", {
