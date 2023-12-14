@@ -3,7 +3,19 @@ return {
     'folke/tokyonight.nvim',
     lazy = false,
     priority = 1000,
-    config = function()
+
+    opts = {
+      styles = {
+        comments = { italic = false },
+        keywords = { italic = false },
+        functions = { italic = false },
+        variables = { italic = false },
+      }
+    },
+
+    config = function(_, opts)
+      require("tokyonight").setup(opts)
+
       -- TODO: Change to tokyonight
       vim.cmd.colorscheme 'tokyonight-night'
     end,

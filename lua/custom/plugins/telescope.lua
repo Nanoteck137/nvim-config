@@ -18,7 +18,7 @@ return {
 
     opts = {
       defaults = {
-        file_sorter = require("telescope.sorters").get_fzy_sorter,
+        -- file_sorter = require("telescope.sorters").get_fzy_sorter,
         prompt_prefix = " > ",
         color_devicons = true,
       },
@@ -43,9 +43,9 @@ return {
     },
 
     keys = {
-      { "<leader>ff", require("telescope.builtin").find_files, desc = "Find Files" },
-      { "<leader>bb", require("telescope.builtin").buffers, desc = "Buffers" },
-      { "<leader>hh", require("telescope.builtin").help_tags, desc = "Help Tags" }
+      { "<leader>ff", function() require("telescope.builtin").find_files() end, desc = "Find Files" },
+      { "<leader>bb", function() require("telescope.builtin").buffers() end, desc = "Buffers" },
+      { "<leader>hh", function() require("telescope.builtin").help_tags() end, desc = "Help Tags" }
 
       -- vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
       -- vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
