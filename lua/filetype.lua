@@ -15,6 +15,11 @@ local filetype_opts = {
   nix = function(bufnr)
     tab2(bufnr)
     vim.bo[bufnr].commentstring = '# %s'
+  end,
+  go = function(bufnr)
+    vim.bo[bufnr].tabstop = 4
+    vim.bo[bufnr].shiftwidth = 4
+    vim.bo[bufnr].expandtab = false
   end
 }
 
