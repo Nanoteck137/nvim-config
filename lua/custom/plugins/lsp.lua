@@ -83,6 +83,8 @@ return {
             telemetry = { enable = false },
           },
         },
+
+        templ = {}
       }
 
       -- Setup neovim lua configuration
