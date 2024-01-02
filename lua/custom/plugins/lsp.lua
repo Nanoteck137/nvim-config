@@ -75,7 +75,16 @@ return {
         },
         svelte = {},
         astro = {},
-        tailwindcss = {},
+        tailwindcss = {
+          filetypes = {
+            'templ'
+          },
+          init_options = {
+            userLanguages = {
+              templ = "html"
+            }
+          }
+        },
 
         lua_ls = {
           Lua = {
