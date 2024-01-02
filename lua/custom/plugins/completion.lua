@@ -21,6 +21,7 @@ return {
       luasnip.config.setup {}
 
       luasnip.filetype_extend("htmldjango", {"html"});
+      luasnip.filetype_extend("templ", {"html"});
 
       ---@diagnostic disable-next-line: missing-fields
       cmp.setup {
