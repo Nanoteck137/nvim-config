@@ -20,6 +20,12 @@ local filetype_opts = {
     vim.bo[bufnr].tabstop = 4
     vim.bo[bufnr].shiftwidth = 4
     vim.bo[bufnr].expandtab = false
+  end,
+  templ = function(bufnr)
+    vim.bo[bufnr].tabstop = 4
+    vim.bo[bufnr].shiftwidth = 4
+    vim.bo[bufnr].expandtab = false
+    vim.bo[bufnr].commentstring = "// %s"
   end
 }
 
